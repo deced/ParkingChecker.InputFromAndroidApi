@@ -17,11 +17,13 @@ namespace ParkingChecker.InputFromAndroidApi.Controllers
             return "working";
         }
         
+        
+      
         [HttpPost]
-        public async Task<IActionResult> SendImage()
+        public async Task<IActionResult> SendImage([FromBody] string base64String)
         {
-            StreamReader sr = new StreamReader(HttpContext.Request.Body);
-            Console.WriteLine(await sr.ReadToEndAsync());
+            string filePath = ".\\pictures\\fileName.jpg";
+            await System.IO.File.WriteAllBytesAsync(filePath, Convert.FromBase64String(base64String));
             return Ok();
         }
     }
