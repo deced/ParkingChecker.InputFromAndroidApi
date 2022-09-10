@@ -20,7 +20,8 @@ namespace ParkingChecker.InputFromAndroidApi.Controllers
         [HttpPost]
         public async Task<IActionResult> SendImage()
         {
-            Console.WriteLine("aa");
+            StreamReader sr = new StreamReader(HttpContext.Request.Body);
+            Console.WriteLine(await sr.ReadToEndAsync());
             return Ok();
         }
     }
