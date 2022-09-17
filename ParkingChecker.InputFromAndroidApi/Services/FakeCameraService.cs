@@ -45,6 +45,9 @@ namespace ParkingChecker.InputFromAndroidApi.Services
             int i = 1;
             while (stoppingToken.IsCancellationRequested == false)
             {
+                if (!File.Exists(Path.Combine(ImagesDirectory, $"Screenshot_{i}.png")))
+                    i = 1;
+                
                 string fullPath = Path.Combine(Directory.GetCurrentDirectory(), $"{parkingId}.png");
                 Console.WriteLine(fullPath);
                 File.Copy(Path.Combine(ImagesDirectory, $"Screenshot_{i}.png"), fullPath,true);
