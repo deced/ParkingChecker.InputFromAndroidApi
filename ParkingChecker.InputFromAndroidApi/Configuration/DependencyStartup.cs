@@ -10,12 +10,6 @@ namespace Lexily.ManagementWarehouseService.Configuration
 {
     public static class DependencyStartup
     {
-        private static void ConfigureMigrations(IConfiguration configuration)
-        {
-            var databaseConfiguration =
-                configuration.GetSection(nameof(DatabaseConfiguration)).Get<DatabaseConfiguration>();
-            
-        }
 
         public static void Configure(IServiceCollection services, IConfiguration configuration)
         {

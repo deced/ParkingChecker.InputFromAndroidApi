@@ -17,7 +17,7 @@ namespace ParkingChecker.InputFromAndroidApi.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class InputController : ControllerBase
+    public class InputController : Controller
     {
         private readonly IBaseRepository<Parking> _parkingRepository;
         private readonly IBaseRepository<ParkingImage> _parkingImageRepository;
@@ -27,6 +27,12 @@ namespace ParkingChecker.InputFromAndroidApi.Controllers
         {
             _parkingRepository = parkingRepository;
             _parkingImageRepository = parkingImageRepository;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            return View();
         }
 
         public string HealthCheck()
